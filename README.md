@@ -11,11 +11,22 @@
   - use homebrew to install node
     - `brew install node`
       - check version with `node -v` and `npm -v`
+- make sure the `bundle` folder is located in .vim/
 - tmux
 
 # Apps used
-- Slack
-- Sublime Text
-- Moom (Window layout)
-- Chrome
+- Slack https://slack.com/downloads/osx
+- Sublime Text https://www.sublimetext.com/
+  - Add to Package Control:
+    - Theme - Flatland
+    - BracketHighlighter
+    - Babel
+    - HTMLBeautify
+    - Emmet
+- Moom (Window layout) https://manytricks.com/moom/
+- Chrome 
 - Firefox Dev Edition
+
+## Other
+- set up SSH for github
+  - copy id_rsa & id_rsa.pub file into .ssh/ via Airdrop 
