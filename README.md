@@ -14,7 +14,7 @@
 - make sure the `bundle` folder is located in .vim/
 - tmux
 
-# Apps used
+# Apps to Download
 - Slack https://slack.com/downloads/osx
 - Sublime Text https://www.sublimetext.com/
   - Add to Package Control:
@@ -26,6 +26,17 @@
 - Moom (Window layout) https://manytricks.com/moom/
 - Chrome 
 - Firefox Dev Edition
+
+# Tools to Bookmark
+- Evernote https://evernote.com/
+- Passpack 8 https://app.passpack.com/#/login
+
+# Chrome Extensions
+- Eye Dropper http://eye-dropper.kepi.cz/
+- Awesome Screenshot https://chrome.google.com/webstore/detail/awesome-screenshot-screen/nlipoenfbbikpbjkfpfillcgkoblgpmj
+- Web Developer (Information tab has useful Accessibility options) https://chrispederick.com/work/web-developer/
+- Stylus (to change the color of visited links in Google search results) https://add0n.com/stylus.html
+![Screenshot of Style](https://github.com/TzolkinB/dotfiles/blob/master/preview.png)
 
 ## Other
 - set up SSH for github
