@@ -1,5 +1,7 @@
 # I install ohmyzsh though I don't really make use of the plugins so could probably do without in the future since I also customize the sorin theme
 
+# .zshrc has code installed by oh-my-zsh and nvm
+# ------------- #
 # .oh-my-zsh/custom/themes/sorin-custom.zsh-theme
 
 MODE_INDICATOR="%B%F{red}❮%{$reset_color%}%F{red}❮❮%{$reset_color%}"
@@ -23,4 +25,3 @@ ZSH_THEME_GIT_PROMPT_DELETED="%F{red} ✖"
 ZSH_THEME_GIT_PROMPT_RENAMED="%F{magenta} ➜"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%F{yellow} ═"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%F{cyan} ✭"
-~                                               
