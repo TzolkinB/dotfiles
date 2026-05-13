@@ -106,3 +106,32 @@ Moom and Firefox Developer Edition are installed automatically via `Brewfile`. T
 git config --global user.name "Your Name"
 git config --global user.email "your@email.com"
 ```
+
+---
+
+## Maintenance
+
+Run periodically to keep packages up to date:
+
+```bash
+brew update && brew upgrade && brew cleanup
+```
+
+After installing any new Homebrew packages or VS Code extensions, sync the Brewfile:
+
+```bash
+brew bundle dump --file=~/dotfiles/Brewfile --force
+```
+
+To upgrade to a new Node LTS version:
+
+```bash
+nvm install --lts
+nvm alias default lts/*
+```
+
+To check for Homebrew issues:
+
+```bash
+brew doctor
+```
