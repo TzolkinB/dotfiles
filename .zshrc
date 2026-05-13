@@ -21,22 +21,21 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(
   git
   dotenv
-  nvm
 )
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # Homebrew-managed zsh plugins (installed via Brewfile)
-source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "$(brew --prefix)/share/zsh-you-should-use/you-should-use.plugin.zsh"
+BREW_PREFIX="$(brew --prefix)"
+if [[ -n "$BREW_PREFIX" ]]; then
+  source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  source "$BREW_PREFIX/share/zsh-you-should-use/you-should-use.plugin.zsh"
+fi
 
 # ============================================================================
 # ENVIRONMENT VARIABLES
 # ============================================================================
-
-# Python 3.13
-export PATH="$PATH:$HOME/Library/Python/3.13/bin"
 
 # Local bin directory
 export PATH="$PATH:$HOME/.local/bin"
@@ -48,14 +47,14 @@ export EDITOR='vim'
 # HISTORY
 # ============================================================================
 
-HISTCONTROL=ignoredups:erasedups
+setopt HIST_IGNORE_ALL_DUPS
 
 # ============================================================================
 # NVM (Node Version Manager)
 # ============================================================================
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -n "$BREW_PREFIX" ] && [ -s "$BREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$BREW_PREFIX/opt/nvm/nvm.sh"
 
 # ============================================================================
 # ALIASES (optional - add your custom aliases here)

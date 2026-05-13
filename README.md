@@ -20,22 +20,25 @@ softwareupdate --install-rosetta --agree-to-license
 
 ## New Machine Quickstart
 
-1. Install [Homebrew](https://brew.sh/)
-2. Clone this repo: `git clone <repo-url> ~/dotfiles`
-3. Make the install script executable: `chmod +x ~/dotfiles/install.sh`
-4. Run the install script: `cd ~/dotfiles && ./install.sh`
+1. Clone this repo: `git clone <repo-url> ~/dotfiles`
+2. Make the install script executable: `chmod +x ~/dotfiles/install.sh`
+3. Run the install script: `cd ~/dotfiles && ./install.sh`
    - Installs oh-my-zsh, then symlinks dotfiles (order matters — prevents oh-my-zsh from overwriting `.zshrc`)
    - Installs all Homebrew packages and VS Code extensions from `Brewfile`
    - Symlinks `.zshrc`, `.vimrc`, and `.gitconfig`
    - Symlinks `sorin-custom.zsh-theme` into `~/.oh-my-zsh/custom/themes/`
-   - Installs latest LTS Node via nvm
-5. Update `.gitconfig` with your name and email — see [Git Config](#git-config) below.
+
+> **Note:** `ln -sf` will overwrite any existing files at those symlink targets. This repo is intended for use on a new machine where `~/.zshrc`, `~/.vimrc`, and `~/.gitconfig` don't exist yet — no backup step is needed.
+
+- Installs latest LTS Node via nvm
+
+4. Update `.gitconfig` with your name and email — see [Git Config](#git-config) below.
 
 ## Brewfile
 
 `Brewfile` is a declarative list of all Homebrew formulae and VS Code extensions. It's used automatically by `install.sh` — you don't need to run it manually during setup.
 
-To update it after installing new packages on your machine:
+To update it after installing new packages on your machine (assumes repo is at `~/dotfiles`):
 
 ```bash
 brew bundle dump --file=~/dotfiles/Brewfile --force
@@ -55,7 +58,7 @@ brew bundle dump --file=~/dotfiles/Brewfile --force
 
 ## Terminal Color Scheme
 
-Import `SublimeFlatland 1.terminal` to Terminal > Settings > Profiles.
+Import `sublime-flatland.terminal` to Terminal > Settings > Profiles.
 
 ---
 
@@ -63,7 +66,7 @@ Import `SublimeFlatland 1.terminal` to Terminal > Settings > Profiles.
 
 `.vimrc` is symlinked to `~/.vimrc` by `install.sh`. Plugins are managed using Vim's built-in package system (Vim 8+) — no plugin manager needed.
 
-`install.sh` clones plugins into `~/.vim/pack/plugins/start/`, which Vim loads automatically on startup:
+`install.sh` clones plugins into `~/.vim/pack/plugins/start/`, which Vim loads automatically on startup. It also symlinks `vim/ftplugin/` into `~/.vim/ftplugin/` for filetype-specific settings (e.g. `css.vim` scopes CSS autocompletion to CSS files only).
 
 | Plugin                                                    | Purpose                      |
 | --------------------------------------------------------- | ---------------------------- |
@@ -98,13 +101,15 @@ Moom and Firefox Developer Edition are installed automatically via `Brewfile`. T
 
 ## Git Config
 
-`.gitconfig` is symlinked to `~/.gitconfig` by `install.sh`.
+`.gitconfig` is symlinked to `~/.gitconfig` by `install.sh`. It contains shared settings (editor, etc.) and an `[include]` directive pointing to `~/.gitconfig.local`.
 
-> **Action required:** The file contains placeholder values. Update them before making any commits:
+`~/.gitconfig.local` holds your personal identity and is **not** tracked in this repo (it's gitignored). `install.sh` creates it automatically if it doesn't exist.
+
+> **Action required:** After running `install.sh`, set your identity:
 
 ```bash
-git config --global user.name "Your Name"
-git config --global user.email "your@email.com"
+git config --file ~/.gitconfig.local user.name "Your Name"
+git config --file ~/.gitconfig.local user.email "your@email.com"
 ```
 
 ---
