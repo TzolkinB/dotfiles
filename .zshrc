@@ -1,27 +1,66 @@
-# I install ohmyzsh though I don't really make use of the plugins so could probably do without in the future since I also customize the sorin theme
+# ============================================================================
+# OH-MY-ZSH SETUP
+# ============================================================================
 
-# .zshrc has code installed by oh-my-zsh and nvm
-# ------------- #
-# .oh-my-zsh/custom/themes/sorin-custom.zsh-theme
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="sorin-custom"
 
-MODE_INDICATOR="%B%F{red}❮%{$reset_color%}%F{red}❮❮%{$reset_color%}"
-local return_status="%F{red}%(?..⏎)%{$reset_color%}"
-   
-# %@ is current time of day in 12 hr am/pm format
-# %c is deprecated, equivalent to %1~ and %1/
-#PROMPT='%@ %{$fg[cyan]%}%c$(git_prompt_info) %(!.%{$fg_bold[red]%}#.%{$fg_bold[green]    %}$)%{$reset_color%} '
-PROMPT='%@ %F{cyan}%1~$(git_prompt_info) %(!.%B%F{red}#.%B%F{green}$)%{$reset_color%}'
+# Disable automatic oh-my-zsh updates (you'll update manually or via Homebrew)
+zstyle ':omz:update' mode disabled
 
-ZSH_THEME_GIT_PROMPT_PREFIX=":%F{red}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=""
-ZSH_THEME_GIT_PROMPT_CLEAN=""
+# Enable command auto-correction
+ENABLE_CORRECTION="true"
 
-RPROMPT='${return_status}$(git_prompt_status)%{$reset_color%}'
+# Show animated dots while waiting for completion
+COMPLETION_WAITING_DOTS="true"
 
-ZSH_THEME_GIT_PROMPT_ADDED="%F{green} ✚"
-ZSH_THEME_GIT_PROMPT_MODIFIED="%F{blue} ✹"
-ZSH_THEME_GIT_PROMPT_DELETED="%F{red} ✖"
-ZSH_THEME_GIT_PROMPT_RENAMED="%F{magenta} ➜"
-ZSH_THEME_GIT_PROMPT_UNMERGED="%F{yellow} ═"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%F{cyan} ✭"
+# Add timestamps to shell history (useful for debugging)
+HIST_STAMPS="yyyy-mm-dd"
+
+# Plugins to load
+plugins=(
+  git
+  dotenv
+  nvm
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# Homebrew-managed zsh plugins (installed via Brewfile)
+source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$(brew --prefix)/share/zsh-you-should-use/you-should-use.plugin.zsh"
+
+# ============================================================================
+# ENVIRONMENT VARIABLES
+# ============================================================================
+
+# Python 3.13
+export PATH="$PATH:$HOME/Library/Python/3.13/bin"
+
+# Local bin directory
+export PATH="$PATH:$HOME/.local/bin"
+
+# Preferred editor
+export EDITOR='vim'
+
+# ============================================================================
+# HISTORY
+# ============================================================================
+
+HISTCONTROL=ignoredups:erasedups
+
+# ============================================================================
+# NVM (Node Version Manager)
+# ============================================================================
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# ============================================================================
+# ALIASES (optional - add your custom aliases here)
+# ============================================================================
+
+# Example:
+# alias ll='ls -la'
+# alias gs='git status'

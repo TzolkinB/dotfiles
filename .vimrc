@@ -1,6 +1,5 @@
 " basic
-execute pathogen#infect()
-"filetype plugin indent on
+filetype plugin indent on
 syntax enable
 
 " uses colors that look good with dark background
