@@ -1,13 +1,12 @@
 " basic
-execute pathogen#infect()
-"filetype plugin indent on
+filetype plugin indent on
 syntax enable
 
 " uses colors that look good with dark background
 " set background=light to see color difference
- set background=dark
+set background=dark
 
- set ruler
+set ruler
 
 " **************** CONVENIENCE MAPPINGS ************  
 " Set the leader key to comma (normally, it's "\")
@@ -17,14 +16,9 @@ let mapleader = ","
 noremap <c-l> <c-l>:syntax sync fromstart<CR>
 inoremap <c-l> <esc><c-l>:syntax sync fromstart<CR>a
 
-" Don't use swap files, they make me cranky
-set noswapfile
 " Put swapfiles in a central place instead of the current directory.
 " Vim will use the first directory that exists.
 set directory=~/.vim_swap,~/tmp,/var/tmp,$HOME/Local\ Settings/Temp 
-
-" Same thing for backup files (see `:help backup`)
-set backupdir=~/.vim_backup,~/tmp,/var/tmp,$HOME/Local\ Settings/Temp 
 
 " ****************** SCROLLING *********************  
 set scrolloff=8      " Number of lines from vertical edge to start scrolling
@@ -42,8 +36,6 @@ set smartcase     " ... unless the search contains upper-case characters
 set hlsearch      " highlight all matched terms
 " Pressing return clears highlighted search
 :nnoremap <CR> :nohlsearch<CR>/<BS>
-" Pressing control + return also clears (for use in NERDTree)
-:nnoremap <c-CR> :nohlsearch<CR>/<BS>
 
 " ***************** TABS ***************************  
 " Usually, you want 2 spaces per tab, so these lines make this the default.
@@ -82,16 +74,13 @@ set textwidth=85
 
 "** When indenting in visual mode, return to visual mode **
 " indent with > or tab
-vmap > >gv
-vmap <tab> >gv
+xmap > >gv
+xmap <tab> >gv
 " outdent with < or shift-tab
-vmap < <gv
-vmap <S-Tab> <gv
+xmap < <gv
+xmap <S-Tab> <gv
 " Shift-tab in insert mode is a backspace (unindent)
 imap <S-Tab> <BS>
-
-" Control+h produces a hashrocket
-imap <C-h> <Space>=><Space>
 
 " Always show line numbers
 set number
@@ -117,7 +106,3 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_java_javac_config_file_enabled=1
 
 let g:vim_markdown_folding_disabled=1
-" Use Vim's default css autocompletion "
-" ctrl + x then ctrl + o "
-set omnifunc=csscomplete#CompleteCSS
-set iskeyword+=-
