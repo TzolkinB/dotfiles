@@ -26,8 +26,10 @@ plugins=(
 source "$ZSH/oh-my-zsh.sh"
 
 # Homebrew-managed zsh plugins (installed via Brewfile)
-BREW_PREFIX="$(brew --prefix)"
-if [[ -n "$BREW_PREFIX" ]]; then
+if command -v brew >/dev/null 2>&1; then
+  BREW_PREFIX="$(brew --prefix)"
+fi
+if [[ -n "${BREW_PREFIX:-}" ]]; then
   source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
   source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
   source "$BREW_PREFIX/share/zsh-you-should-use/you-should-use.plugin.zsh"
@@ -54,7 +56,7 @@ setopt HIST_IGNORE_ALL_DUPS
 # ============================================================================
 
 export NVM_DIR="$HOME/.nvm"
-[ -n "$BREW_PREFIX" ] && [ -s "$BREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$BREW_PREFIX/opt/nvm/nvm.sh"
+[ -n "${BREW_PREFIX:-}" ] && [ -s "$BREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$BREW_PREFIX/opt/nvm/nvm.sh"
 
 # ============================================================================
 # ALIASES (optional - add your custom aliases here)

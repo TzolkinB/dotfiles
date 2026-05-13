@@ -27,10 +27,9 @@ softwareupdate --install-rosetta --agree-to-license
    - Installs all Homebrew packages and VS Code extensions from `Brewfile`
    - Symlinks `.zshrc`, `.vimrc`, and `.gitconfig`
    - Symlinks `sorin-custom.zsh-theme` into `~/.oh-my-zsh/custom/themes/`
+   - Installs latest LTS Node via nvm
 
 > **Note:** `ln -sf` will overwrite any existing files at those symlink targets. This repo is intended for use on a new machine where `~/.zshrc`, `~/.vimrc`, and `~/.gitconfig` don't exist yet — no backup step is needed.
-
-- Installs latest LTS Node via nvm
 
 4. Update `.gitconfig` with your name and email — see [Git Config](#git-config) below.
 
