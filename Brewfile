@@ -5,7 +5,7 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 brew "zsh-you-should-use"
 
-cask "firefox-developer-edition"
+cask "firefox@developer-edition"
 cask "moom"
 vscode "andrew-codes.cypress-snippets"
 vscode "be5invis.vscode-custom-css"

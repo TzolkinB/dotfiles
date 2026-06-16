@@ -20,9 +20,9 @@ softwareupdate --install-rosetta --agree-to-license
 
 ## New Machine Quickstart
 
-1. Clone this repo: `git clone <repo-url> ~/dotfiles`
-2. Make the install script executable: `chmod +x ~/dotfiles/install.sh`
-3. Run the install script: `cd ~/dotfiles && ./install.sh`
+1. Clone this repo: `git clone <repo-url> ~/projects/dotfiles`
+2. Make the install script executable: `chmod +x ~/projects/dotfiles/install.sh`
+3. Run the install script: `cd ~/projects/dotfiles && ./install.sh`
    - Installs oh-my-zsh, then symlinks dotfiles (order matters — prevents oh-my-zsh from overwriting `.zshrc`)
    - Installs all Homebrew packages and VS Code extensions from `Brewfile`
    - Symlinks `.zshrc`, `.vimrc`, and `.gitconfig`
@@ -37,10 +37,10 @@ softwareupdate --install-rosetta --agree-to-license
 
 `Brewfile` is a declarative list of all Homebrew formulae and VS Code extensions. It's used automatically by `install.sh` — you don't need to run it manually during setup.
 
-To update it after installing new packages on your machine (assumes repo is at `~/dotfiles`):
+To update it after installing new packages on your machine (assumes repo is at `~/projects/dotfiles`):
 
 ```bash
-brew bundle dump --file=~/dotfiles/Brewfile --force
+brew bundle dump --file=~/projects/dotfiles/Brewfile --force
 ```
 
 ---
@@ -124,7 +124,7 @@ brew update && brew upgrade && brew cleanup
 After installing any new Homebrew packages or VS Code extensions, sync the Brewfile:
 
 ```bash
-brew bundle dump --file=~/dotfiles/Brewfile --force
+brew bundle dump --file=~/projects/dotfiles/Brewfile --force
 ```
 
 To upgrade to a new Node LTS version:
